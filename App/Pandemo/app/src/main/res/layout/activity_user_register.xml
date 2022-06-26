@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UserRegister">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:fontFamily="sans-serif-black"
+                android:paddingHorizontal="10dp"
+                android:text="PANDEMO"
+                android:textColor="@color/primary"
+                android:textSize="40dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:paddingHorizontal="20dp"
+                android:text="Sign up"
+                android:textAlignment="center"
+                android:textColor="@color/secondary"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="140dp"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/vector_2" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="10dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:background="@color/secondary"
+                            android:paddingHorizontal="15dp"
+                            android:paddingVertical="14dp">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/ic_user" />
+
+                        </LinearLayout>
+
+                        <EditText
+                            android:id="@+id/fullname"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_field"
+                            android:hint="Fullname"
+                            android:inputType="text"
+                            android:paddingHorizontal="20dp"
+                            android:paddingVertical="15dp"
+                            android:textColor="#555" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="10dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:background="@color/secondary"
+                            android:paddingHorizontal="15dp"
+                            android:paddingVertical="14dp">
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:adjustViewBounds="true"
+                                android:tint="@color/white"
+                                android:src="@drawable/ic_idcard" />
+
+                        </LinearLayout>
+
+                        <EditText
+                            android:id="@+id/aadhaar"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_field"
+                            android:hint="Aadhaar"
+                            android:inputType="number"
+                            android:paddingHorizontal="20dp"
+                            android:paddingVertical="15dp"
+                            android:textColor="#555" />
+
+                    </LinearLayout>
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:gravity="right"-->
+<!--                        android:layout_marginBottom="10dp"-->
+<!--                        android:orientation="horizontal">-->
+
+<!--                        <Button-->
+<!--                            android:id="@+id/aadhaarcopy"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginHorizontal="10dp"-->
+<!--                            android:backgroundTint="@color/secondary"-->
+<!--                            android:onClick="submitAadhaar"-->
+<!--                            android:paddingVertical="15dp"-->
+<!--                            android:text="Upload  Aadhaar" />-->
+
+<!--                    </LinearLayout>-->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="10dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:background="@color/secondary"
+                            android:paddingHorizontal="15dp"
+                            android:paddingVertical="14dp">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/ic_mobile" />
+
+                        </LinearLayout>
+
+                        <EditText
+                            android:id="@+id/phone"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_field"
+                            android:hint="Mobile no"
+                            android:inputType="number"
+                            android:paddingHorizontal="20dp"
+                            android:paddingVertical="15dp"
+                            android:textColor="#555" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="10dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:background="@color/secondary"
+                            android:paddingHorizontal="15dp"
+                            android:paddingVertical="14dp">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/ic_calendar" />
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/dob"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_field"
+                            android:text="DOB"
+                            android:onClick="setDate"
+                            android:paddingHorizontal="20dp"
+                            android:paddingVertical="15dp"
+                            android:textSize="17dp"
+                            android:textColor="#555" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="10dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:background="@color/secondary"
+                            android:paddingHorizontal="15dp"
+                            android:paddingVertical="14dp">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/ic_mail_alt" />
+
+                        </LinearLayout>
+
+                        <EditText
+                            android:id="@+id/email"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_field"
+                            android:hint="E-mail"
+                            android:inputType="textEmailAddress"
+                            android:paddingHorizontal="20dp"
+                            android:paddingVertical="15dp"
+                            android:textColor="#555" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="10dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:background="@color/secondary"
+                            android:paddingHorizontal="15dp"
+                            android:paddingVertical="14dp">
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:adjustViewBounds="true"
+                                android:tint="@color/white"
+                                android:src="@drawable/ic_address" />
+
+                        </LinearLayout>
+
+                        <EditText
+                            android:id="@+id/address"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/bg_field"
+                            android:hint="Address"
+                            android:inputType="textMultiLine"
+                            android:paddingHorizontal="20dp"
+                            android:paddingVertical="15dp"
+                            android:textColor="#555" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="10dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:background="@color/secondary"
+                            android:paddingHorizontal="15dp"
+                            android:paddingVertical="14dp">
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:tint="@color/white"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/ic_job" />
+
+                        </LinearLayout>
+
+                        <EditText
+                            android:id="@+id/job"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/bg_field"
+                            android:hint="Job"
+                            android:inputType="text"
+                            android:paddingHorizontal="20dp"
+                            android:paddingVertical="15dp"
+                            android:textColor="#555" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="10dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:background="@color/secondary"
+                            android:paddingHorizontal="15dp"
+                            android:paddingVertical="14dp">
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:tint="@color/white"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/ic_section" />
+
+                        </LinearLayout>
+
+                        <EditText
+                            android:id="@+id/jobsector"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/bg_field"
+                            android:hint="Job sector"
+                            android:inputType="text"
+                            android:paddingHorizontal="20dp"
+                            android:paddingVertical="15dp"
+                            android:textColor="#555" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="10dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:background="@color/secondary"
+                            android:paddingHorizontal="15dp"
+                            android:paddingVertical="14dp">
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:adjustViewBounds="true"
+                                android:tint="@color/white"
+                                android:src="@drawable/ic_jobdesc" />
+
+                        </LinearLayout>
+
+                        <EditText
+                            android:id="@+id/jobdesc"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/bg_field"
+                            android:hint="Job description"
+                            android:inputType="text"
+                            android:paddingHorizontal="20dp"
+                            android:paddingVertical="15dp"
+                            android:textColor="#555" />
+                    </LinearLayout>
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:gravity="right"-->
+<!--                        android:layout_marginBottom="10dp"-->
+<!--                        android:orientation="horizontal">-->
+
+<!--                        <Button-->
+<!--                            android:id="@+id/uploadphoto"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginHorizontal="10dp"-->
+<!--                            android:backgroundTint="@color/secondary"-->
+<!--                            android:onClick="submitPhoto"-->
+<!--                            android:paddingVertical="15dp"-->
+<!--                            android:text="Upload  photo" />-->
+
+<!--                    </LinearLayout>-->
+
+                    <Spinner
+                        android:id="@+id/district"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/bg_field"
+                        android:paddingHorizontal="10dp"
+                        android:spinnerMode="dropdown"
+                        android:textColor="#555" />
+
+                    <Spinner
+                        android:id="@+id/location"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/bg_field"
+                        android:paddingHorizontal="10dp"
+                        android:spinnerMode="dropdown"
+                        android:textColor="#555" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="10dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:background="@color/secondary"
+                            android:paddingHorizontal="15dp"
+                            android:paddingVertical="14dp">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/ic_lock" />
+
+                        </LinearLayout>
+
+                        <EditText
+                            android:id="@+id/password"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/bg_field"
+                            android:hint="Password"
+                            android:inputType="textPassword"
+                            android:paddingHorizontal="20dp"
+                            android:paddingVertical="15dp"
+                            android:textColor="#555" />
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/btn_login"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="10dp"
+                        android:backgroundTint="@color/secondary"
+                        android:onClick="userSignup"
+                        android:paddingVertical="15dp"
+                        android:text="Sign up" />
+
+                </LinearLayout>
+
+            </ScrollView>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

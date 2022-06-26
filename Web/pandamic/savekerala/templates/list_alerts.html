@@ -1,0 +1,146 @@
+{% extends "admin.html" %}
+{% load static %}
+{% block content %}
+<div class="row  p-3">	
+<div class="col-md-12 bg-info">
+    <h2 class="text-dark " style="font-weight: 600;">Manage Current Alert Details</h2>
+      <table id="table table-responsive table-striped " width="100%" style="margin-bottom:10px;">
+    <thead class=" text-white" style="background-color: #1a2732;">
+ <tr >
+                      <th style="  color:white;">#</th>
+                      <th style="  color:white;" >Alert Type</th>
+                      <th style="  color:white;" >Instruction</th>
+                      
+                      <th style="  color:white;" >Posted date</th>
+                      <th style="  color:white;" >Started date</th>
+                      <th style="  color:white;" >District</th>
+                      <th style="  color:white;" >Pandamic</th>
+                
+                      <th style="  color:white; text-align: center;" >Status</th>
+                      <th style="  color:white; text-align: center;" >Action</th>
+                    </tr>
+                    </thead>
+              
+              
+  <tbody>
+{% for d in data %}
+<tr >
+    <td>{{forloop.counter}}</td>
+    <td >{{d.alerttype}}</td>
+    <td >{{d.alertinstrction}}</td>
+    <td >{{d.postdt}}</td>
+    <td >{{d.startdt}}</td>
+    <td >{{d.distict.district}}</td>
+    <td >{{d.category.categoryname}}</td>
+   
+    <td >{{d.alertstatus}}</td>
+    
+    <td >
+        <div style="display: flex;">
+        {% if d.alertstatus != "active" %}
+        <a href="{% url 'activate_pandamic' %}?id={{d.alertsid}}"  class="btn btn-warning btn-sm " style="margin: 5px;" >Activate</a>
+        
+        {% else %}
+        <a href="{% url 'deactivate_pandamic' %}?id={{d.alertsid}}" class="btn btn-warning btn-sm " style="margin: 5px;" >Deactivate</a>
+        
+        {% endif %}
+        <a href="#" data-toggle='modal' data-target='#edit-{{d.alertsid}}'class="btn btn-info btn-sm " style="margin: 5px;" >Edit</a>
+           
+        <a href="{% url 'remove_pandamic' %}?id={{d.alertsid}}" class="btn btn-sm btn-danger " style="margin: 5px;">Delete</a>
+        </div>
+    </td>
+  </tr>
+  <div id="edit-{{d.alertsid}}" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+   
+    <!-- Modal content-->
+    <div class="modal-content">
+    <form role="form" action="{% url 'list_alert' %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="t1" readonly value="{{d.alertsid}}"/>
+                        <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+    <h4 class="modal-title">Alert Details</h4>
+    </div>
+      
+    <div class="modal-body">
+    <div class="form-group">
+    <label for="email">Pandamic </label>
+    <input type="text" class="form-control" readonly name="s1" value="{{d.category.categoryname}}"  />
+    </div>
+    
+    <div class="form-group">
+    <label for="email">District</label>
+    <input type="text" class="form-control" readonly name="s2" value="{{d.distict.district}}"  />
+   
+    </div>
+    <!--alertsid,alerttype,alertinstrction,category,distict,postdt,startdt,alertstatus-->
+
+    <div class="form-group">
+        <label for="email">Alert Type</label>
+        <select class="form-control" name="s3" required>
+            <option value="">-select-</option>
+            <option 
+            {% if d.alerttype == "red" %}
+            selected="selected"
+            {% endif %}
+            
+            >red</option>
+            <option
+            {% if d.alerttype == "orange" %}
+            selected="selected"
+            {% endif %}
+            >orange</option>
+            <option 
+            {% if d.alerttype == "yellow" %}
+            selected="selected"
+            {% endif %}
+            >yellow</option>
+        </select>
+        </div>
+    
+        <div class="form-group">
+            <label for="email">Instruction</label>
+            <input type="text" class="form-control" name="s4" value="{{d.alertinstrction}}"  />
+           
+            </div>
+    
+            <div class="form-group">
+                <label for="email">Date</label>
+                <input type="date" class="form-control" name="s5" value="{{d.startdt}}"  />
+               
+                </div>
+               
+
+    
+    </div>
+    <div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+    <input type="submit" class="btn btn-default" value="Update"/>
+    </div>
+    </div>
+    </form>
+    </div>
+    </div>
+{% endfor %}
+
+</tbody>
+</table>
+</div>
+<!---    </div>-->
+
+</div>
+
+<style>
+    table th, table td {
+    padding: 9px 7px;
+    text-align: left;
+    }
+    table th
+    {
+        color:white;
+    }
+    </style>
+
+
+{% endblock %}

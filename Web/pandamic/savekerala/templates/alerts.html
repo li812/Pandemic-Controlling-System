@@ -1,0 +1,100 @@
+{% extends "admin.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+<div class="row">
+    <div class="col-md-12 bg-info">
+     <h3 class="text-primary">Pandamic alerts to District</h3>
+     <div class="col-md-1"></div>
+       <div class="col-md-10">
+        <form class="form-horizontal" enctype="multipart/form-data" method="post" action="{% url 'alerts' %}">
+            {% csrf_token %}
+      
+                <div class="tab-pane active" id="horizontal-form">
+                       
+                        <div class="form-group">
+                            <label for="focusedinput" class="col-sm-2 ">Distict</label>
+                            <div class="col-sm-8">
+                                <select class="form-control" name="t1" required>
+                                    <option value="">-select-</option>
+                                    {% for d in dis %}
+                                    <option value="{{d.district_id}}">{{d.district}}</option>
+                                    {% endfor%}
+                                </select>
+                                  </div>
+                        
+                        </div>
+                        <div class="form-group">
+                            <label for="focusedinput" class="col-sm-2 ">Pandamic </label>
+                            <div class="col-sm-8">
+                                <select class="form-control" name="t2" required>
+                                    <option value="">-select-</option>
+                                    {% for d in cats %}
+                                    <option value="{{d.category_id}}">{{d.categoryname}}</option>
+                                    {% endfor%}
+                                </select>
+                            </div>
+                        
+                        </div>
+                        <div class="form-group">
+                    <label class="col-md-2 ">Alert Type</label>
+                    <div class="col-md-8">
+                        						
+                            <select class="form-control" name="t3" required>
+                                <option value="">-select-</option>
+                                <option >red</option>
+                                <option >orange</option>
+                                <option >yellow</option>
+                            </select>
+                        
+                    </div>
+                </div>
+                <div class="form-group">
+                            <label for="mediuminput" class="col-sm-2">Instruction</label>
+                            <div class="col-sm-8">
+                                <textarea class="form-control" 
+                                name="t4" id="phn"  required id="mediuminput"
+                                 placeholder="Instraction to follow"></textarea>
+                            </div>
+                        </div>
+                    <div class="form-group">
+                            <label for="selector1" class="col-sm-2 ">Date</label>
+                            <div class="col-sm-8">
+                                <input type="date" name="t5" required id="selector1" 
+                                class="form-control" placeholder="Date">
+                            </div>
+                        </div>	
+                      
+                   
+              
+                     
+                </div>
+           
+            
+        
+    
+    <div class="" style="margin-bottom: 10px; padding-top: 10px;">
+    <div class="row">
+    <!--<div class="col-sm-8 col-sm-offset-2">
+        <input type="submit" value="Submit" class="btn-primary btn"/>
+        
+        <input type="cancel" value="cancel" class="btn-info btn"/>
+        
+    </div>-->
+    <div class="col-sm-8 col-sm-offset-2" align="center">
+        <button class="btn-success btn" type="submit" name="submit">SEND</button>
+        <input type="reset" value="Reset" class=" btn btn-warning"/>
+        
+    </div>
+    </div>
+    </div>
+    </form>
+    </div>
+    </div>
+    
+
+{% endblock %}

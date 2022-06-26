@@ -1,0 +1,75 @@
+{% extends "shop.html" %}
+{% load static %}
+{% block content %}
+
+<div class="row  p-3">
+  <div class="col-md-12 bg-info">
+    <h2 class="text-primary">Order History</h2>
+    <table id="table table-responsive table-striped " width="100%" style="margin-bottom:10px;">
+      <thead class=" text-white" style="background-color: #1a2732;">
+        <tr>
+          <th style="  color:white;">Sl.No.</th>
+          <th style="  color:white;">Order from</th>
+          <th style="  color:white;">Order details</th>
+          <th style="  color:white;">Total</th>
+          <th style="  color:white;">Date</th>
+          <th style="  color:white; text-align: center;">Status</th>
+        </tr>
+      </thead>
+
+
+      <tbody style="vertical-align: top;">
+        {% for d in data %}
+        <tr style="border-bottom: 0.5px solid #ccc">
+          <td>{{forloop.counter}}</td>
+          <td>
+            {{d.user.pubname}}<br>
+            {{d.user.pubcontact}}<br>
+            {{d.user.pubaddress}}
+          </td>
+          <td>
+            {% for o in d.getOrderItems %}
+            <div style=" display: flex; margin-bottom: 20px;">
+              <img src="../media/{{o.stock.medpic}}" width="80px" height="80px" />
+              <span style=" margin-left: 10px;">
+              {{o.stock.medicinename}} ( {{o.stock.medtype}} )<br>
+              Price : &#8377;{{o.stock.medprice}}<br>
+              Quantity : {{o.qty}}<br>
+              Subtotal : &#8377;{% widthratio o.stock.medprice 1 o.qty %}
+              </span>
+            </div>
+            {% endfor %}
+          </td>
+          <td>
+            &#8377;{{d.getOrderSum}}
+          </td>
+          <td>
+            {{d.date}}
+          </td>
+          <td style="vertical-align: middle; text-align: center;">
+            Delivered
+        </tr>
+        
+        {% endfor %}
+
+      </tbody>
+    </table>
+  </div>
+  <!---    </div>-->
+
+</div>
+
+<style>
+  table th,
+  table td {
+    padding: 9px 7px;
+    text-align: left;
+  }
+
+  table th {
+    color: white;
+  }
+</style>
+
+
+{% endblock %}

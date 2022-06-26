@@ -1,0 +1,77 @@
+{% extends "staff.html" %}
+{% load static %}
+{% block content %}
+
+<div class="row  p-3">
+    <div class="col-md-12 bg-info">
+        <h2 class="text-primary">Waiting Kit Request</h2>
+        <table id="table table-responsive table-striped " width="100%" style="margin-bottom:10px;">
+            <thead class=" text-white" style="background-color: #1a2732;">
+                <tr>
+                    <th style="  color:white;">Sl.No.</th>
+                    <th style="  color:white;">User Details</th>
+                    <th style="  color:white;">Service request</th>
+                    <th style="  color:white;">Service date</th>
+                    <th style="  color:white;">Asha worker</th>
+                    <th style="  color:white;">Status</th>
+                </tr>
+            </thead>
+
+
+            <tbody>
+                {% for d in data %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>
+                        {{d.public.pubname}}<br />
+                        {{d.public.pubaddress}}<br />
+                        {{d.public.pubemail}}<br />
+                        {{d.public.pubcontact}}
+                    </td>
+                    <td>
+                        Reason : {{d.isolationreason}}<br>
+                        Requirements : {{d.requirement}}
+                    </td>
+                    <td>{{d.reqdate}}</td>
+                    <td>
+                        {% if d.requeststatus == "assigned" or d.requeststatus == "completed"%}
+                        {{d.worker.empname}}<br>
+                        {{d.worker.empcontact}}<br>
+                        {{d.worker.empemail}}
+                        {% else %}
+                        Not assigned
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if d.requeststatus == "assigned" %}
+                        Service not completed
+                        {% else %}
+                        {{d.requeststatus}}
+                        {% endif%}
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+    <!---    </div>-->
+
+</div>
+
+<style>
+    table th,
+    table td {
+        padding: 9px 7px;
+        text-align: left;
+    }
+
+    table th {
+        color: white;
+    }
+</style>
+
+
+{% endblock %}

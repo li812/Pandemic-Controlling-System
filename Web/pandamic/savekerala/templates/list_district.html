@@ -1,0 +1,110 @@
+{% extends "admin.html" %}
+{% load static %}
+{% block content %}
+<div class="row  p-3">	
+<div class="col-md-12 bg-info">
+    <h2 class="text-primary">Manage Distict Admin</h2>
+      <table id="table table-responsive table-striped " width="100%" style="margin-bottom:10px;">
+    <thead class=" text-white" style="background-color: #1a2732;">
+ <tr >
+                      <th style="  color:white;">Sl.No.</th>
+                      <th style="  color:white;" >District Name</th>
+                      <th style="  color:white;" >Office In charge</th>
+                      
+                      <th style="  color:white;" >Email</th>
+                      <th style="  color:white;" >Phoneno</th>
+                      <th style="  color:white;" >Designation</th>
+                      <th style="  color:white;" >Action</th>
+                    </tr>
+                    </thead>
+  
+  <tbody>
+{% for d in data %}
+<tr >
+    <td>{{forloop.counter}}</td>
+    <td >{{d.district}}</td>
+    <td >{{d.districtadminnm}}</td>
+    <td >{{d.districtadmindemail}}</td>
+    <td >{{d.districtadmindcontact}}</td>
+    <td >{{d.districtadmindes}}</td>
+    <td >
+        <a href="#" data-toggle='modal' data-target='#edit-{{d.district_id}}'class="btn btn-info btn-xs" >Edit</a>
+      
+        <a href="{% url 'remove_district' %}?id={{d.district_id}}" class="btn btn-xs btn-danger">Delete</a></td>
+  </tr>
+  <div id="edit-{{d.district_id}}" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+    
+    <!-- Modal content-->
+    <div class="modal-content">
+    <form role="form" action="{% url 'list_district' %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="t1" readonly value="{{d.district_id}}"/>
+                        <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+    <h4 class="modal-title">District Details</h4>
+    </div>
+   
+    <div class="modal-body">
+    <div class="form-group">
+    <label for="email">Name:</label>
+    <input type="text" class="form-control" name="s1" value="{{d.district}}" readonly />
+    </div>
+    
+    <div class="form-group">
+    <label for="email">Office In charge</label>
+    <input type="text" class="form-control" name="s2" value="{{d.districtadminnm}}"  />
+   
+    </div>
+    
+    <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="text" class="form-control" name="s3" value="{{d.districtadmindemail}}"  />
+       
+        </div>
+    
+        <div class="form-group">
+            <label for="email">Phone No.</label>
+            <input type="text" class="form-control" name="s4" value="{{d.districtadmindcontact}}"  />
+           
+            </div>
+    
+            <div class="form-group">
+                <label for="email">Designation</label>
+                <input type="text" class="form-control" name="s5" value="{{d.districtadmindes}}"  />
+               
+                </div>
+                
+
+    
+    </div>
+    <div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+    <input type="submit" class="btn btn-default" value="Update"/>
+    </div>
+    </div>
+    </form>
+    </div>
+    </div>
+{% endfor %}
+
+</tbody>
+</table>
+</div>
+<!---    </div>-->
+
+</div>
+
+<style>
+    table th, table td {
+    padding: 9px 7px;
+    text-align: left;
+    }
+    table th
+    {
+        color:white;
+    }
+    </style>
+
+
+{% endblock %}

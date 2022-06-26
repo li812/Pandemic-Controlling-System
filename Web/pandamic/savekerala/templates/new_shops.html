@@ -1,0 +1,75 @@
+{% extends "staff.html" %}
+{% load static %}
+{% block content %}
+
+<div class="row  p-3">
+  <div class="col-md-12 bg-info">
+    <h2 class="text-dark " style="font-weight: 600;">Newly Registered Medical shops</h2>
+    <table id="table table-responsive table-striped " width="100%" style="margin-bottom:10px;">
+      <thead class=" text-white" style="background-color: #1a2732;">
+        <tr>
+          <th style="  color:white;">#</th>
+          <th style="  color:white;">Medical shop</th>
+          <th style="  color:white;">License no</th>
+
+          <th style="  color:white;">Owner</th>
+          <th style="  color:white;">Contact no</th>
+          <th style="  color:white;">Email</th>
+          <th style="  color:white;">Location</th>
+
+          <th style="  color:white;">License copy</th>
+          <th style="  color:white;">Action</th>
+        </tr>
+      </thead>
+
+
+      <tbody>
+        {% for d in data %}
+        <tr>
+          <td>{{forloop.counter}}</td>
+          <td>{{d.shopname}}</td>
+          <td>{{d.licenseno}}</td>
+          <td>{{d.ownerno}}</td>
+          <td>{{d.contactno}}</td>
+          <td>{{d.email}}</td>
+          <td>{{d.location.location}}</td>
+
+          <td>
+            {% if d.licensecpy == "" %}
+              LICENCE COPY NOT AVAILABLE
+            {% else %}
+            <a href="../media/{{d.licensecpy}}" target="_blank">View doc</a>
+            {% endif %}
+          </td>
+
+          <td>
+          <div style="display: flex;">
+            <a href="{% url 'remove_shop' %}?id={{d.medshop_id}}" class="btn btn-sm btn-danger" style="margin: 5px;">Delete</a>
+            <a href="{% url 'approve_shop' %}?id={{d.medshop_id}}" class="btn btn-sm btn-success" style="margin: 5px;">Approve</a>
+          </div>
+          </td>
+        </tr>
+
+        {% endfor %}
+
+      </tbody>
+    </table>
+  </div>
+  <!---    </div>-->
+
+</div>
+
+<style>
+  table th,
+  table td {
+    padding: 9px 7px;
+    text-align: left;
+  }
+
+  table th {
+    color: white;
+  }
+</style>
+
+
+{% endblock %}

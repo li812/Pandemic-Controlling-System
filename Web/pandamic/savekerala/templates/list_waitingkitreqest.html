@@ -1,0 +1,176 @@
+{% extends "staff.html" %}
+{% load static %}
+{% block content %}
+
+<div class="row  p-3">	
+    <div class="col-md-12 bg-info">
+        <h2 class="text-dark " style="font-weight: 600;">Waiting Kit Request</h2>
+          <table id="table table-responsive table-striped " width="100%" style="margin-bottom:10px;">
+        <thead class=" text-white" style="background-color: #1a2732;">
+     <tr >
+                          <th style="  color:white; text-align: center;">#</th>
+                          <th style="  color:white;" >User Details</th>
+                         
+                          
+                          <th style="  color:white;" >Location</th>
+                          <th style="  color:white;" >Last Request date</th>
+                          <th style="  color:white;" >Current Request date</th>
+                
+                          <th style="  color:white;" >Action</th>
+                        </tr>
+                        </thead>
+                        
+                       
+      <tbody>
+    {% for d in data %}
+    <tr >
+        <td style="text-align: center;">{{forloop.counter}}</td>
+        <td >{{d.public.pubname}}<br/>
+          {{d.public.pubaddress}}<br/>
+          {{d.public.pubemail}}<br/>
+
+          {{d.public.pubcontact}}
+        </td>
+        <td > {{d.public.location.location}}</td>
+        <td >
+          {% if d.previousrequestdate == "" %}
+          <span class="text-info">No previous records</span>
+          {% else %}
+          {{d.previousrequestdate}}
+          {% endif %}
+        </td>
+        <td >{{d.requestdt}}</td>
+        
+    
+       
+      
+        
+        <td >
+
+{% if d.workstatus  == "waiting" %}
+<a href="#" data-toggle='modal' data-target='#edit-{{d.kitid}}'
+class="btn btn-info btn-sm " >Assign</a>
+           
+
+<div id="edit-{{d.kitid}}" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+ 
+  <!-- Modal content-->
+  <div class="modal-content">
+  <form role="form" action="{% url 'assign_work' %}" method="post">
+      {% csrf_token %}
+      <input type="hidden" name="t1" readonly value="{{d.kitid}}"/>
+                      <div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal">&times;</button>
+  <h4 class="modal-title">Work Allotment</h4>
+  </div>
+    
+  <div class="modal-body">
+
+  
+
+
+  
+      <div class="form-group">
+          <label for="email">Asha Worker</label>
+          <select name="s4"  class="form-control"  required>
+<option>-select-</option>
+{% for ds in datas %}
+<option value="{{ds.workerid}}">{{ds.empname}} [{{ds.empcode}}]</option>
+{% endfor %}
+          </select>
+         
+          </div>
+  
+          <div class="form-group">
+              <label for="email">shedule date</label>
+              <input type="date" class="form-control" name="s5" />
+             
+              </div>
+             
+
+  
+  </div>
+  <div class="modal-footer">
+  <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+  <input type="submit" class="btn btn-default" value="Allot"/>
+  </div>
+  </div>
+  </form>
+  </div>
+  </div>
+{% else %}
+<a href="#" data-toggle='modal' data-target='#edit-{{d.kitid}}'
+class="btn btn-info btn-sm " >View</a>
+           
+
+<div id="edit-{{d.kitid}}" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+ 
+  <!-- Modal content-->
+  <div class="modal-content">
+  <form role="form" action="{% url 'assign_work' %}" method="post">
+      {% csrf_token %}
+      <input type="hidden" name="t1" readonly value="{{d.kitid}}"/>
+                      <div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal">&times;</button>
+  <h4 class="modal-title">Work Allotment</h4>
+  </div>
+    
+  <div class="modal-body">
+
+  
+
+
+  
+      <div class="form-group">
+          <label for="email">Asha Worker</label>
+          <input type="text" name="s4" value="{{d.ashaworker.empname}} [ {{d.ashaworker.empcode}} ]" readonly class="form-control"  />
+         
+          </div>
+  
+          <div class="form-group">
+              <label for="email">shedule date</label>
+              <input type="text" class="form-control" readonly name="s5" value="{{d.allotedate}}" />
+             
+              </div>
+             
+
+  
+  </div>
+  <div class="modal-footer">
+  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+  
+  </div>
+  </div>
+  </form>
+  </div>
+  </div>
+{% endif %}
+<a href="{% url 'Reject_kit' %}?id={{d.kitid}}"
+ class="btn btn-sm btn-danger ">Reject</a>
+ </td>
+      </tr>
+  
+    {% endfor %}
+    
+    </tbody>
+    </table>
+    </div>
+    <!---    </div>-->
+    
+    </div>
+    
+    <style>
+        table th, table td {
+        padding: 9px 7px;
+        text-align: left;
+        }
+        table th
+        {
+            color:white;
+        }
+        </style>
+    
+    
+{% endblock %}

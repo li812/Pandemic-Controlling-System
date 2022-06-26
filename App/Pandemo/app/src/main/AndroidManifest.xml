@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.pandemo">
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Pandemo"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".UserAshaChat"></activity>
+        <activity android:name=".UserRegister2" />
+        <activity android:name=".DocUserChat" />
+        <activity android:name=".DocPublicList" />
+        <activity android:name=".AshaServiceHistory" />
+        <activity android:name=".AshaServiceRequests" />
+        <activity android:name=".UserServiceBookings" />
+        <activity
+            android:name=".UserRequestService"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UserPlaceOrder"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UserMedicineBookings"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UserAddToCart"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UserShopList"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UserBookMedicine"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DocTodayCases"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DocCompletedTestcases"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DocAddTestReport"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DocImageView"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DocTestCases"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UserUploadResult"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UserQrcodeScan"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UserIssuedTestKits"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AshaVerifiedKits"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AshaQrcodeScan"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AshaKitRequests"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UserRequestKit"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DoctorProfile"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UserAshaWorkers"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".userDoctorChat"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UserDoctorsList"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UserProfile"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UserPrivacy"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AshaHome"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DocHome"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UserHome"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UserRegister"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Login"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

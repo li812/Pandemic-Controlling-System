@@ -1,0 +1,101 @@
+{% extends "admin.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+<div class="row">
+    <div class="col-md-12 bg-info">
+     <h3 class="text-primary">Update New Pandamic info</h3>
+     <div class="col-md-1"></div>
+       <div class="col-md-10">
+        <form class="form-horizontal" enctype="multipart/form-data" method="post" action="{% url 'New_pandamic' %}">
+            {% csrf_token %}
+      
+                <div class="tab-pane active" id="horizontal-form">
+                       
+                        <div class="form-group">
+                            <label for="focusedinput" class="col-sm-2 ">Pandemic name</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="t1" required id="focusedinput" placeholder="Pandemic name">
+                            </div>
+                        
+                        </div>
+                        <div class="form-group">
+                            <label for="focusedinput" class="col-sm-2 ">Description </label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="t2" 
+                                required id="focusedinput" placeholder="Description">
+                            </div>
+                        
+                        </div>
+                        <div class="form-group">
+                    <label class="col-md-2 ">Pandamic Type</label>
+                    <div class="col-md-8">
+                        <div class="input-group">							
+                            <!--<span class="input-group-addon">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>-->
+                            <input type="text" class="form-control" name="t3"
+                             required  id="typ"  required placeholder="Pandemic type">
+                      <span class="text-danger"> &nbsp; eg: weather related, virus outbreak etc.</span>
+                            </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                            <label for="mediuminput" class="col-sm-2">Date</label>
+                            <div class="col-sm-8">
+                                <input type="date" class="form-control" 
+                                name="t4" id="phn"  required id="mediuminput"
+                                 placeholder="Phone Number">
+                                 <span class="text-danger"> &nbsp; Date of first case reported or targeted date if it weather related</span>
+                            </div>
+                        </div>
+                    <div class="form-group">
+                            <label for="selector1" class="col-sm-2 ">Symtoms</label>
+                            <div class="col-sm-8">
+                                <input type="text" name="t5" required id="selector1" 
+                                class="form-control" placeholder="Symtoms">
+                                <span class="text-danger"> &nbsp; eg: symtoms for weather , symtoms outbreak</span>
+                            </div>
+                        </div>	
+                      
+                   
+                        <div class="form-group">
+                            <label for="mediuminput" class="col-sm-2 " required>Precautions</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="t6" 
+                                required id="mediuminput" placeholder="precautions">
+                            </div>
+                        </div>
+                    
+                 
+                     
+                </div>
+           
+            
+        
+    
+    <div class="" style="margin-bottom: 10px;padding-top: 10px;">
+    <div class="row">
+    <!--<div class="col-sm-8 col-sm-offset-2">
+        <input type="submit" value="Submit" class="btn-primary btn"/>
+        
+        <input type="cancel" value="cancel" class="btn-info btn"/>
+        
+    </div>-->
+    <div class="col-sm-8 col-sm-offset-2" align="center">
+        <button class="btn-success btn" type="submit" name="submit">POST</button>
+        <input type="reset" value="Reset" class=" btn btn-warning"/>
+        
+    </div>
+    </div>
+    </div>
+    </form>
+    </div>
+    </div>
+    
+
+{% endblock %}

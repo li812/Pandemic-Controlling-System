@@ -1,0 +1,143 @@
+{% extends "staff.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+<div class="row">
+    <div class="col-md-12 bg-info">
+     <h3 class="text-primary">Appoint staff</h3>
+     <div class="col-md-1"></div>
+       <div class="col-md-10">
+        <form class="form-horizontal" enctype="multipart/form-data" method="post" action="{% url 'Appoint_staff' %}">
+            {% csrf_token %}
+      
+                <div class="tab-pane active" id="horizontal-form">
+                       
+                        <div class="form-group">
+                            <label for="focusedinput" class="col-sm-2 ">Employee Code</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="t1" required id="focusedinput" 
+                                placeholder="Employee code">
+                            </div>
+                            
+                        </div>
+                        <div class="form-group">
+                            <label for="focusedinput" class="col-sm-2 ">Employee name</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="t2" 
+                                required id="focusedinput" placeholder="Employee Name ">
+                            </div>
+                        
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 ">Address</label>
+                            <div class="col-md-8">
+                                <div class="input-group">							
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-envelope-o"></i>
+                                    </span>
+                                    <input type="text" class="form-control" name="t3"
+                                     required placeholder=" Address" id="ema"  required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                    <label class="col-md-2 ">Email Address</label>
+                    <div class="col-md-8">
+                        <div class="input-group">							
+                            <span class="input-group-addon">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                            <input type="text" class="form-control" name="t4"
+                             required placeholder="Email Address" id="ema" onblur="auemailss();" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                            <label for="mediuminput" class="col-sm-2">Phone Number</label>
+                            <div class="col-sm-8">
+                                <input type="number" class="form-control" 
+                                name="t5" id="phn" onblur="auphoness();" required id="mediuminput"
+                                 placeholder="Phone Number">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="mediuminput" class="col-sm-2">Employee photo</label>
+                            <div class="col-sm-8">
+                                <input type="file" class="form-control" 
+                                name="t6" id="phn"  required id="mediuminput"
+                                 placeholder="Phone Number">
+                            </div>
+                        </div>
+                        
+                    <div class="form-group">
+                            <label for="selector1" class="col-sm-2 ">Location</label>
+                            <div class="col-sm-8">
+                                <select name="t7"
+                                class="form-control" >
+                            <option value="">-select-</option>
+                            {% for d in data %}
+                            <option value="{{d.location_id}}">{{d.location}}</option>
+                          {% endfor %}
+                            </select>
+                            </div>
+                        </div>	
+                        
+                        <div class="form-group">
+                            <label for="selector1" class="col-sm-2 ">Employee type</label>
+                            <div class="col-sm-8">
+                                <select name="t8"
+                                class="form-control" >
+                            <option value="">-select-</option>
+                            <option value="doc">Doctor</option>
+                            <option value="asha">Asha Worker</option>
+                            </select>
+
+                            </div>
+                        </div>	
+                        <div class="form-group">
+                            <label for="mediuminput" class="col-sm-2 " required>User Name</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="t9" 
+                                required id="mediuminput" placeholder="User Name">
+                            </div>
+                        </div>
+                    
+                    <div class="form-group">
+                            <label for="inputPassword" class="col-sm-2 ">Password</label>
+                            <div class="col-sm-8">
+                                <input type="password" class="form-control" 
+                                name="t10" required id="inputPassword" 
+                                placeholder="Password">
+                            </div>
+                        </div>
+                     
+                </div>
+           
+            
+        
+    
+    <div class="" style="margin-bottom: 10px;">
+    <div class="row">
+    <!--<div class="col-sm-8 col-sm-offset-2">
+        <input type="submit" value="Submit" class="btn-primary btn"/>
+        
+        <input type="cancel" value="cancel" class="btn-info btn"/>
+        
+    </div>-->
+    <div class="col-sm-8 col-sm-offset-2" align="center">
+        <button class="btn-success btn" type="submit" name="submit" style="margin: 10px 0px;">Appoint</button>
+        <input type="reset" value="Reset" class=" btn btn-warning" style="margin: 10px 0px;"/>
+        
+    </div>
+    </div>
+    </div>
+    </form>
+    </div>
+    </div>
+    
+
+{% endblock %}

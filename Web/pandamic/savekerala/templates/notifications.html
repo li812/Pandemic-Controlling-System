@@ -1,0 +1,104 @@
+{% extends "admin.html" %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+<div class="row">
+    <div class="col-md-12 bg-info">
+        <h3 class="text-primary">Notifications</h3>
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <form class="form-horizontal" enctype="multipart/form-data" method="post"
+                action="{% url 'notifications' %}">
+                {% csrf_token %}
+                <div class="tab-pane active" id="horizontal-form">
+                    <div class="form-group">
+                        <label for="focusedinput" class="col-sm-2 ">Pandemic </label>
+                        <div class="col-sm-8">
+                            <select class="form-control" name="t1" required>
+                                <option value="" selected disabled hidden>- - SELECT - -</option>
+                                {% for d in cats %}
+                                <option value="{{d.category_id}}">{{d.categoryname}}</option>
+                                {% endfor%}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mediuminput" class="col-sm-2">Title</label>
+                        <div class="col-sm-8">
+                            <textarea class="form-control" name="t2" id="phn" required id="mediuminput" placeholder=""></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="mediuminput" class="col-sm-2">Message</label>
+                        <div class="col-sm-8">
+                            <textarea class="form-control" name="t3" id="phn" required id="mediuminput" placeholder=""></textarea>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="" style="margin-bottom: 10px; padding-top: 10px;">
+                    <div class="row">
+                        <div class="col-sm-8 col-sm-offset-2" style="text-align: center;">
+                            <button class="btn-success btn" type="submit" name="submit">Save</button>
+                            <input type="reset" value="Reset" class=" btn btn-warning" />
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+
+        <div class="col-md-12 bg-info">
+            <table id="table table-responsive table-striped " width="100%" style="margin-bottom:10px;">
+                <thead class=" text-white" style="background-color: #1a2732;">
+                    <tr>
+                        <th style="  color:white;">Sl.No.</th>
+                        <th style="  color:white;">pandamic</th>
+
+                        <th style="  color:white;">Title</th>
+
+                        <th style="  color:white;">Message</th>
+                        <th style="  color:white;">Posted date</th>
+                        <th style="  color:white;">Action</th>
+                    </tr>
+                </thead>
+
+
+                <tbody>
+                    {% for d in data %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{d.category.categoryname}}</td>
+                        <td>{{d.notificationtitle}}</td>
+                        <td>{{d.notification}}</td>
+                        <td>{{d.notificdate}}</td>
+                        <td>
+                            <a href="{% url 'remove_notif' %}?id={{d.notif_id}}"
+                                class="btn btn-xs btn-danger ">Delete</a>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <style>
+        table th,
+        table td {
+            padding: 9px 7px;
+            text-align: left;
+        }
+
+        table th {
+            color: white;
+        }
+    </style>
+    {% endblock %}

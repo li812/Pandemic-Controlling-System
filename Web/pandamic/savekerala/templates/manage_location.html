@@ -1,0 +1,94 @@
+{% extends "staff.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+<div class="row  p-3">	
+    <div class="col-md-12 bg-info">
+        <h2 class="text-dark " style="font-weight: 600;">Manage Location</h2>
+        <div class="col-md-6" style="margin-left: auto; margin-right: auto; float: none;">
+            <form class="form-horizontal" enctype="multipart/form-data" method="post"
+                action="{% url 'manage_location' %}">
+                {% csrf_token %}
+
+                <div class="tab-pane active" id="horizontal-form">
+
+                    <div class="form-group">
+                        <label for="focusedinput" class="col-sm-2 ">Location</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" name="t1" required id="focusedinput"
+                                placeholder="Location">
+                        </div>
+                    </div>
+                </div>
+                <div class="" style="margin-bottom: 10px;">
+                    <div class="row">
+                        <div class="" align="center" style="margin: 10px;">
+                            <button class="btn-success btn" type="submit" name="submit">Save</button>
+                            <input type="reset" value="Reset" class=" btn btn-warning" />
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+
+
+
+
+    <div class="col-md-12">
+
+        <table id="table table-responsive table-striped " width="100%" style="margin-bottom:10px;">
+            <thead class=" text-white" style="background-color: #1a2732;">
+                <tr>
+                    <th style="  color:white; text-align: center;">#</th>
+
+
+                    <th style="  color:white;">location</th>
+
+                    <th style="  color:white; text-align: center;">Action</th>
+                </tr>
+            </thead>
+
+
+            <tbody>
+                {% for d in data %}
+                <tr>
+                    <td style=" text-align: center;">{{forloop.counter}}</td>
+
+
+                    <td>{{d.location}}</td>
+
+
+
+                    <td style=" text-align: center;">
+                        <a href="{% url 'remove_loc' %}?id={{d.location_id}}" class="btn btn-sm btn-danger ">Delete</a>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+    <!---    </div>-->
+
+</div>
+<style>
+    table th,
+    table td {
+        padding: 9px 7px;
+        text-align: left;
+    }
+
+    table th {
+        color: white;
+    }
+</style>
+
+{% endblock %}

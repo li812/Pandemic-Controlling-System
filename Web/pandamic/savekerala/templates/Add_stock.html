@@ -1,0 +1,114 @@
+{% extends "shop.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+<div class="row">
+    <div class="col-md-12 bg-info">
+     <h3 class="text-primary">Add New Stock</h3>
+     <div class="col-md-1"></div>
+       <div class="col-md-10">
+        <form class="form-horizontal" enctype="multipart/form-data" method="post"
+         action="{% url 'Add_stock' %}">
+            {% csrf_token %}
+      
+                <div class="tab-pane active" id="horizontal-form">
+                       
+                        <div class="form-group">
+                            <label for="focusedinput" class="col-sm-2 ">Name</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="t1" required id="focusedinput" 
+                                placeholder="Medicine Name">
+                            </div>
+                            
+                        </div>
+                        <div class="form-group">
+                            <label for="focusedinput" class="col-sm-2 ">medicine price </label>
+                            <div class="col-sm-8">
+                                <input type="nuber" class="form-control" name="t2"  min="0"
+                                required id="focusedinput" placeholder="Price  ">
+                            </div>
+                        
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 "> medicine description  </label>
+                            <div class="col-md-8">
+                                <div class="input-group">							
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-envelope-o"></i>
+                                    </span>
+                                    <input type="text" class="form-control" name="t3"
+                                     required placeholder=" description " id="ema"  required>
+                                </div>
+                            </div>
+                        </div>
+                       
+                <div class="form-group">
+                            <label for="mediuminput" class="col-sm-2">medicine intial qunatity</label>
+                            <div class="col-sm-8">
+                                <input type="number" min="0" class="form-control" 
+                                name="t4" id="phn"  required id="mediuminput"
+                                 placeholder="Qty">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="mediuminput" class="col-sm-2">medicine photo</label>
+                            <div class="col-sm-8">
+                                <input type="file" class="form-control" 
+                                name="t5" id="phn"  required id="mediuminput"
+                                 placeholder="Phone Number">
+                            </div>
+                        </div>
+                        
+                   	
+                        
+                        <div class="form-group">
+                            <label for="selector1" class="col-sm-2 "> medicine type</label>
+                            <div class="col-sm-8">
+                                <select name="t6"
+                                class="form-control" >
+                            <option value="">-select-</option>
+                            <option>caps</option>
+                            <option>tonic</option>
+                            <option>Drops</option>
+                            <option>vaxicn</option>
+                            <option>Cream</option>
+                            <option>oil</option>
+                            <option>Powder</option>
+                            </select>
+
+                            </div>
+                        </div>	
+                      
+                    
+                 
+                     
+                </div>
+           
+            
+        
+    
+    <div class="" style="margin-bottom: 10px;">
+    <div class="row">
+    <!--<div class="col-sm-8 col-sm-offset-2">
+        <input type="submit" value="Submit" class="btn-primary btn"/>
+        
+        <input type="cancel" value="cancel" class="btn-info btn"/>
+        
+    </div>-->
+    <div class="col-sm-8 col-sm-offset-2" align="center">
+        <button class="btn-success btn" type="submit" name="submit">Update</button>
+        <input type="reset" value="Reset" class=" btn btn-warning"/>
+        
+    </div>
+    </div>
+    </div>
+    </form>
+    </div>
+    </div>
+    
+
+{% endblock %}

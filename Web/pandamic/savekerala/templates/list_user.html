@@ -1,0 +1,79 @@
+{% extends "staff.html" %}
+{% load static %}
+{% block content %}
+
+<div class="row  p-3">
+  <div class="col-md-12 bg-info">
+    <h2 class="text-dark " style="font-weight: 600;"">New User Details</h2>
+    <table id="table table-responsive table-striped " width="100%" style="margin-bottom:10px;">
+      <thead class=" text-white" style="background-color: #1a2732;">
+        <tr>
+          <th style="  color:white;">#</th>
+          <th style="  color:white;">Public photo</th>
+          <th style="  color:white;">Personal data</th>
+          <th style="  color:white;">Address</th>
+
+
+          <th style="  color:white;">Aadhaar no</th>
+          <th style="  color:white;">Job info</th>
+
+
+          <th style="  color:white;">Location</th>
+          <th style="  color:white;">Document</th>
+          <th style="  color:white;">Action</th>
+        </tr>
+      </thead>
+
+
+      <tbody>
+        {% for d in data %}
+        <tr>
+          <td>{{forloop.counter}}</td>
+          <td><img src="../media/photo/{{d.pubphoto}}" style="width: 60px; height: 60px; object-fit: cover;" /></td>
+          <td>{{d.pubname}}<br>
+            DOB : {{d.pubdob}}<br>
+            {{d.pubcontact}}
+            {{d.pubemail}}</td>
+
+          <td>{{d.pubaddress}}</td>
+
+          <td>{{d.addharno}}</td>
+
+          <td>{{d.pubjob}}<br>
+            {{d.pubjobsector}} <br>
+            {{d.pubjobdescrp}}</td>
+
+          <td><a href="../media/aadhaar/{{d.addharcopy}}" target="_blank">view document</a></td>
+
+          <td>{{d.location.location}}</td>
+
+
+
+          <td>
+            <a href="{% url 'remove_usr' %}?id={{d.pubid}}" class="btn btn-xs btn-danger ">Delete</a>
+            <a href="{% url 'approve_usr' %}?id={{d.pubid}}" class="btn btn-xs btn-success ">Approve</a>
+        </tr>
+
+        {% endfor %}
+
+      </tbody>
+    </table>
+  </div>
+  <!---    </div>-->
+
+</div>
+
+<style>
+  table th,
+  table td {
+    padding: 9px 7px;
+    text-align: left;
+  }
+
+  table th {
+    color: white;
+  }
+</style>
+
+
+{% endblock %}
